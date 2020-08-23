@@ -1,9 +1,9 @@
-import {FormBuilder} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
-import {TypedFormGroup} from '../../models/typed-form-group.model';
-import {TypedFormGroupBuilderService} from '../typed-form-group-builder.service';
-import {EmployeeDto} from './employee.dto';
-import {FORM_CONFIG} from './form-config.const';
+import { TypedFormGroup } from '../../models/typed-form-group.model';
+import { TypedFormGroupBuilderService } from '../typed-form-group-builder.service';
+import { EmployeeDto } from './employee.dto';
+import { FORM_CONFIG } from './form-config.const';
 
 describe('DemoTypedFormBuilderService', () => {
   let service: TypedFormGroupBuilderService;
@@ -18,7 +18,6 @@ describe('DemoTypedFormBuilderService', () => {
     expect(service).toBeTruthy();
   });
 
-
   it('should produce a form', () => {
     expect(form).toBeTruthy();
   });
@@ -29,10 +28,12 @@ describe('DemoTypedFormBuilderService', () => {
 
   it('should fetch each control corresponding to dto keys', () => {
     // Act
-    const controls = Object.keys(FORM_CONFIG).map(i => form.get(i as keyof EmployeeDto));
+    const controls = Object.keys(FORM_CONFIG).map((i) =>
+      form.get(i as keyof EmployeeDto)
+    );
 
     // Assert
-    expect(controls.every(c => Boolean(c))).toBeTruthy();
+    expect(controls.every((c) => Boolean(c))).toBeTruthy();
   });
 
   it('should preserve values in form', () => {
@@ -41,7 +42,11 @@ describe('DemoTypedFormBuilderService', () => {
       const control = form.get(key as keyof EmployeeDto);
 
       /** Exclude non-arrays */
-      if (!Array.isArray(value) || key === 'permissions' || key === 'nicknames') {
+      if (
+        !Array.isArray(value) ||
+        key === 'permissions' ||
+        key === 'nicknames'
+      ) {
         return true;
       }
 
@@ -53,10 +58,10 @@ describe('DemoTypedFormBuilderService', () => {
   });
 
   it('should get the position name of parent employee', () => {
-
     const expectedValue = 'Joker';
 
-    const parentPositionControl = form.controls.parentEmployee.controls.position.controls.name;
+    const parentPositionControl =
+      form.controls.parentEmployee.controls.position.controls.name;
 
     expect(parentPositionControl.value).toEqual(expectedValue);
   });
@@ -72,4 +77,3 @@ describe('DemoTypedFormBuilderService', () => {
     expect(permissionControl.at(0).value[0].id).toEqual(expectedValue.id);
   });
 });
-

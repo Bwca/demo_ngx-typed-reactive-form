@@ -1,5 +1,5 @@
-import {AbstractControl} from '@angular/forms';
-import {Observable} from 'rxjs';
+import { AbstractControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 export interface TypedAbstractControl<T> extends AbstractControl {
   value: Partial<T>;
