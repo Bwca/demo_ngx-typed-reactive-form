@@ -1,5 +1,5 @@
-import {TypedFormBuilderConfig} from '../../../models/typed-form-builder-config.type';
-import {FriendDto, UserDto} from './user.dto';
+import { TypedFormBuilderConfig } from '../../../models/typed-form-builder-config.type';
+import { FriendDto, UserDto } from './user.dto';
 
 export const USER_FORM_CONFIG: TypedFormBuilderConfig<UserDto> = {
   id: ['null'],
@@ -14,13 +14,11 @@ export const USER_FORM_CONFIG: TypedFormBuilderConfig<UserDto> = {
       apartment: ['null'],
       building: ['null'],
       city: ['null'],
-      street: ['null']
+      street: ['null'],
     },
     email: ['null'],
-    phone: ['null']
+    phone: ['null'],
   },
-  friends: [
-    [{} as FriendDto]
-  ],
+  friends: [[{} as FriendDto]],
   tags: [[]],
 };

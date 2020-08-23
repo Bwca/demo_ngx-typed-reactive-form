@@ -1,11 +1,11 @@
 import { FormBuilder } from '@angular/forms';
 
-import { TypedFormGroup } from '../../models/typed-form-group.model';
+import { TypedFormGroup } from '../../models/typed-reactive-controls/typed-form-group.model';
 import { TypedFormGroupBuilderService } from '../typed-form-group-builder.service';
 import { EmployeeDto } from './employee-test-case/employee.dto';
 import { FORM_CONFIG } from './employee-test-case/form-config.const';
-import {USER_FORM_CONFIG} from './user-test-case/user-form.config';
-import {UserDto} from './user-test-case/user.dto';
+import { USER_FORM_CONFIG } from './user-test-case/user-form.config';
+import { UserDto } from './user-test-case/user.dto';
 
 describe('DemoTypedFormBuilderService', () => {
   let service: TypedFormGroupBuilderService;
@@ -79,9 +79,6 @@ describe('DemoTypedFormBuilderService', () => {
     expect(permissionControl.at(0).value[0].id).toEqual(expectedValue.id);
   });
 });
-
-
-
 
 describe('DemoTypedFormBuilderService', () => {
   let service: TypedFormGroupBuilderService;
