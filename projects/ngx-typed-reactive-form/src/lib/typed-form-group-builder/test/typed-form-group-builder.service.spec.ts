@@ -18,8 +18,13 @@ describe('DemoTypedFormBuilderService', () => {
     expect(service).toBeTruthy();
   });
 
+
   it('should produce a form', () => {
     expect(form).toBeTruthy();
+  });
+
+  it('form should match snapshot', () => {
+    expect(form).toMatchSnapshot();
   });
 
   it('should fetch each control corresponding to dto keys', () => {
@@ -36,7 +41,7 @@ describe('DemoTypedFormBuilderService', () => {
       const control = form.get(key as keyof EmployeeDto);
 
       /** Exclude non-arrays */
-      if (!Array.isArray(value)) {
+      if (!Array.isArray(value) || key === 'permissions' || key === 'nicknames') {
         return true;
       }
 
@@ -54,6 +59,17 @@ describe('DemoTypedFormBuilderService', () => {
     const parentPositionControl = form.controls.parentEmployee.controls.position.controls.name;
 
     expect(parentPositionControl.value).toEqual(expectedValue);
+  });
+
+  it('permissions should be an array of objects', () => {
+    // Arrange
+    const expectedValue = FORM_CONFIG.permissions[0][0];
+
+    // Act
+    const permissionControl = form.controls.permissions;
+
+    // Assert
+    expect(permissionControl.at(0).value[0].id).toEqual(expectedValue.id);
   });
 });
 

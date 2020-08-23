@@ -1,7 +1,7 @@
-import { Validators } from '@angular/forms';
+import {Validators} from '@angular/forms';
 
-import { TypedFormBuilderConfig } from '../../models/typed-form-builder-config.type';
-import { EmployeeDto } from './employee.dto';
+import {TypedFormBuilderConfig} from '../../models/typed-form-builder-config.type';
+import {EmployeeDto} from './employee.dto';
 
 export const FORM_CONFIG: TypedFormBuilderConfig<EmployeeDto> = {
   creationDate: ['1991-12-12'],
@@ -32,7 +32,13 @@ export const FORM_CONFIG: TypedFormBuilderConfig<EmployeeDto> = {
       name: ['Joker', Validators.required],
     },
   },
-  permissions: ['permissions'],
+  permissions: [[
+    {
+      id: 1,
+      name: ''
+    }
+  ], Validators.required],
+  nicknames: [['Bob', 'Jill']],
   phone: ['832-313-8717'],
   position: {
     actualFrom: ['1991-12-12', Validators.required],

@@ -6,9 +6,15 @@ export interface EmployeeDto {
   lastName: string;
   middleName: string;
   parentEmployee: Employee;
-  permissions: string[];
+  permissions: Permission[];
   phone: string;
   position: Position;
+  nicknames: string[];
+}
+
+export interface Permission {
+  id: number;
+  name: string;
 }
 
 export interface Department {
