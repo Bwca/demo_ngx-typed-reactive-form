@@ -9,7 +9,7 @@ export interface TypedFormGroup<T, P extends FormGroup | FormArray = FormGroup |
   value: Partial<T>;
   valueChanges: Observable<Partial<T>>;
   parent: P;
- // controls: TypedControls<T>;
+  controls: TypedControls<T>;
 
   setValue(val: T): void;
   getRawValue(): T;
