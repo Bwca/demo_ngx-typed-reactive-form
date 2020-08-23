@@ -1,15 +1,17 @@
-import {TestBed} from '@angular/core/testing';
+import {FormBuilder} from '@angular/forms';
 
+import {TypedFormGroup} from '../../models/typed-form-group.model';
 import {TypedFormGroupBuilderService} from '../typed-form-group-builder.service';
 import {EmployeeDto} from './employee.dto';
 import {FORM_CONFIG} from './form-config.const';
-import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
 
 describe('DemoTypedFormBuilderService', () => {
   let service: TypedFormGroupBuilderService;
+  let form: TypedFormGroup<EmployeeDto>;
 
   beforeEach(() => {
     service = new TypedFormGroupBuilderService(new FormBuilder());
+    form = service.buildFormGroupFromConfig<EmployeeDto>(FORM_CONFIG);
   });
 
   it('should be created', () => {
@@ -17,14 +19,10 @@ describe('DemoTypedFormBuilderService', () => {
   });
 
   it('should produce a form', () => {
-    const form = service.buildFormGroupFromConfig<EmployeeDto>(FORM_CONFIG);
     expect(form).toBeTruthy();
   });
 
   it('should fetch each control corresponding to dto keys', () => {
-    // Arrange
-    const form = service.buildFormGroupFromConfig<EmployeeDto>(FORM_CONFIG);
-
     // Act
     const controls = Object.keys(FORM_CONFIG).map(i => form.get(i as keyof EmployeeDto));
 
@@ -33,9 +31,6 @@ describe('DemoTypedFormBuilderService', () => {
   });
 
   it('should preserve values in form', () => {
-    // Arrange
-    const form = service.buildFormGroupFromConfig<EmployeeDto>(FORM_CONFIG);
-
     // Act
     const sameValues = Object.entries(FORM_CONFIG).every(([key, value]) => {
       const control = form.get(key as keyof EmployeeDto);
@@ -50,6 +45,15 @@ describe('DemoTypedFormBuilderService', () => {
 
     // Assert
     expect(sameValues).toBeTruthy();
+  });
+
+  it('should get the position name of parent employee', () => {
+
+    const expectedValue = 'Joker';
+
+    const parentPositionControl = form.controls.parentEmployee.controls.position.controls.name;
+
+    expect(parentPositionControl.value).toEqual(expectedValue);
   });
 });
 

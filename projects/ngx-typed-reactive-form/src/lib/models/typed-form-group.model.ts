@@ -1,18 +1,18 @@
-import {AbstractControl, FormArray, FormControl, FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {FormGroup} from '@angular/forms';
 
-type TypedControls<T> = {
-  [K in keyof T & string]: TypedFormGroup<T[K]>
-}
+import {OverriddenProperties} from './overridden-properties.type';
+import {TypedAbstractControl} from './typed-abstract-control.model';
+import {TypedControl} from './typed-form-control.type';
 
-export interface TypedFormGroup<T, P extends FormGroup | FormArray = FormGroup | FormArray> extends FormGroup {
-  value: Partial<T>;
-  valueChanges: Observable<Partial<T>>;
-  parent: P;
-  controls: TypedControls<T>;
 
-  setValue(val: T): void;
+interface FormGroupOverride<T> extends FormGroup {
+  controls: {
+    [K in keyof T]: T[K] extends object ? FormGroupOverride<T[K]> : TypedControl<T[K]>;
+  };
+
   getRawValue(): T;
-  patchValue(val: Partial<T>): void;
-  get<C>(path: keyof T & string): C extends unknown ? FormControl : TypedFormGroup<C>;
 }
+
+export type TypedFormGroup<T> =
+  OverriddenProperties<FormGroup, FormGroupOverride<T>>
+  & TypedAbstractControl<T>;
