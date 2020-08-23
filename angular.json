@@ -2,5 +2,45 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "ngx-typed-reactive-form": {
+      "projectType": "library",
+      "root": "projects/ngx-typed-reactive-form",
+      "sourceRoot": "projects/ngx-typed-reactive-form/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-typed-reactive-form/tsconfig.lib.json",
+            "project": "projects/ngx-typed-reactive-form/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-typed-reactive-form/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-typed-reactive-form/src/test.ts",
+            "tsConfig": "projects/ngx-typed-reactive-form/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-typed-reactive-form/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-typed-reactive-form/tsconfig.lib.json",
+              "projects/ngx-typed-reactive-form/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-typed-reactive-form"
 }
