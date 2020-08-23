@@ -2,8 +2,10 @@ import { FormBuilder } from '@angular/forms';
 
 import { TypedFormGroup } from '../../models/typed-form-group.model';
 import { TypedFormGroupBuilderService } from '../typed-form-group-builder.service';
-import { EmployeeDto } from './employee.dto';
-import { FORM_CONFIG } from './form-config.const';
+import { EmployeeDto } from './employee-test-case/employee.dto';
+import { FORM_CONFIG } from './employee-test-case/form-config.const';
+import {USER_FORM_CONFIG} from './user-test-case/user-form.config';
+import {UserDto} from './user-test-case/user.dto';
 
 describe('DemoTypedFormBuilderService', () => {
   let service: TypedFormGroupBuilderService;
@@ -75,5 +77,30 @@ describe('DemoTypedFormBuilderService', () => {
 
     // Assert
     expect(permissionControl.at(0).value[0].id).toEqual(expectedValue.id);
+  });
+});
+
+
+
+
+describe('DemoTypedFormBuilderService', () => {
+  let service: TypedFormGroupBuilderService;
+  let form: TypedFormGroup<UserDto>;
+
+  beforeEach(() => {
+    service = new TypedFormGroupBuilderService(new FormBuilder());
+    form = service.buildFormGroupFromConfig<UserDto>(USER_FORM_CONFIG);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should produce a form', () => {
+    expect(form).toBeTruthy();
+  });
+
+  it('form should match snapshot', () => {
+    expect(form).toMatchSnapshot();
   });
 });

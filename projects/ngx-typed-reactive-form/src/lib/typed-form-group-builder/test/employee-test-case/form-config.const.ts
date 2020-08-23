@@ -1,6 +1,6 @@
 import { Validators } from '@angular/forms';
 
-import { TypedFormBuilderConfig } from '../../models/typed-form-builder-config.type';
+import { TypedFormBuilderConfig } from '../../../models/typed-form-builder-config.type';
 import { EmployeeDto } from './employee.dto';
 
 export const FORM_CONFIG: TypedFormBuilderConfig<EmployeeDto> = {
