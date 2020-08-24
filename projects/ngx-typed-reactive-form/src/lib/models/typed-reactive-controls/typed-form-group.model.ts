@@ -1,7 +1,7 @@
-import {FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 
-import {NestedControl} from '../utility-types/nested-control.type';
+import { NestedControl } from '../utility-types/nested-control.type';
 
 export interface TypedFormGroup<T> extends FormGroup {
   value: Partial<T>;

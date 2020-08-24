@@ -1,7 +1,7 @@
-import {Validators} from '@angular/forms';
+import { Validators } from '@angular/forms';
 
-import {TypedFormBuilderConfig} from '../../../models/typed-form-builder-config.type';
-import { UserDto} from './user.dto';
+import { TypedFormBuilderConfig } from '../../../models/typed-form-builder-config.type';
+import { UserDto } from './user.dto';
 
 export const USER_FORM_CONFIG: TypedFormBuilderConfig<UserDto> = {
   id: ['1312332'],
@@ -21,8 +21,10 @@ export const USER_FORM_CONFIG: TypedFormBuilderConfig<UserDto> = {
     email: ['some-email@email.com'],
     phone: ['1-458-485-45-54'],
   },
-  friends: [{
-    name: 'Jane Doe'
-  }],
+  friends: [
+    {
+      name: 'Jane Doe',
+    },
+  ],
   tags: [['tag one', 'tag two']],
 };

@@ -1,15 +1,14 @@
-import {Injectable} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
-import {TypedFormBuilderConfig} from '../models/typed-form-builder-config.type';
-import {TypedFormGroup} from '../models/typed-reactive-controls/typed-form-group.model';
+import { TypedFormBuilderConfig } from '../models/typed-form-builder-config.type';
+import { TypedFormGroup } from '../models/typed-reactive-controls/typed-form-group.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TypedFormGroupBuilderService {
-  constructor(private fb: FormBuilder) {
-  }
+  constructor(private fb: FormBuilder) {}
 
   private static isPrimitiveValue(value: any): boolean {
     return typeof value !== 'object';

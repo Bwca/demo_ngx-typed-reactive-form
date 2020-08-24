@@ -1,11 +1,11 @@
-import {FormBuilder} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
-import {TypedFormGroup} from '../../models/typed-reactive-controls/typed-form-group.model';
-import {TypedFormGroupBuilderService} from '../typed-form-group-builder.service';
-import {EmployeeDto} from './employee-test-case/employee.dto';
-import {FORM_CONFIG} from './employee-test-case/form-config.const';
-import {USER_FORM_CONFIG} from './user-test-case/user-form.config';
-import {UserDto} from './user-test-case/user.dto';
+import { TypedFormGroup } from '../../models/typed-reactive-controls/typed-form-group.model';
+import { TypedFormGroupBuilderService } from '../typed-form-group-builder.service';
+import { EmployeeDto } from './employee-test-case/employee.dto';
+import { FORM_CONFIG } from './employee-test-case/form-config.const';
+import { USER_FORM_CONFIG } from './user-test-case/user-form.config';
+import { UserDto } from './user-test-case/user.dto';
 
 describe('DemoTypedFormBuilderService', () => {
   let service: TypedFormGroupBuilderService;
@@ -107,21 +107,19 @@ describe('DemoTypedFormBuilderService', () => {
   let form: TypedFormGroup<UserDto>;
 
   it('form should match snapshot', () => {
-
     const address = fb.group(USER_FORM_CONFIG.contacts.address);
-    const contacts = fb.group({...USER_FORM_CONFIG.contacts, address});
+    const contacts = fb.group({ ...USER_FORM_CONFIG.contacts, address });
 
     form = fb.group({
       ...USER_FORM_CONFIG,
       contacts,
-      friends: fb.array([])
+      friends: fb.array([]),
     }) as TypedFormGroup<UserDto>;
 
-    USER_FORM_CONFIG.friends.forEach(i => form.controls.friends.push(fb.group(i)));
+    USER_FORM_CONFIG.friends.forEach((i) =>
+      form.controls.friends.push(fb.group(i))
+    );
 
     expect(form).toMatchSnapshot();
   });
 });
-
-
-

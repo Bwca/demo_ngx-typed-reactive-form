@@ -1,5 +1,5 @@
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 export interface TypedFormControl<T> extends FormControl {
   value: Partial<T>;
