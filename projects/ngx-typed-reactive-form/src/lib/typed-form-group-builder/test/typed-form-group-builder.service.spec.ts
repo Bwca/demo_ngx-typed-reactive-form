@@ -1,11 +1,11 @@
-import { FormBuilder } from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 
-import { TypedFormGroup } from '../../models/typed-reactive-controls/typed-form-group.model';
-import { TypedFormGroupBuilderService } from '../typed-form-group-builder.service';
-import { EmployeeDto } from './employee-test-case/employee.dto';
-import { FORM_CONFIG } from './employee-test-case/form-config.const';
-import { USER_FORM_CONFIG } from './user-test-case/user-form.config';
-import { UserDto } from './user-test-case/user.dto';
+import {TypedFormGroup} from '../../models/typed-reactive-controls/typed-form-group.model';
+import {TypedFormGroupBuilderService} from '../typed-form-group-builder.service';
+import {EmployeeDto} from './employee-test-case/employee.dto';
+import {FORM_CONFIG} from './employee-test-case/form-config.const';
+import {USER_FORM_CONFIG} from './user-test-case/user-form.config';
+import {UserDto} from './user-test-case/user.dto';
 
 describe('DemoTypedFormBuilderService', () => {
   let service: TypedFormGroupBuilderService;

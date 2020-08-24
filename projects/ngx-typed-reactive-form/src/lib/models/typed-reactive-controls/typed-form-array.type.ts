@@ -1,18 +1,12 @@
 import {FormArray} from '@angular/forms';
+import {Observable} from 'rxjs';
 
-import {OverrideProperties} from '../utility-types/override-properties.type';
-import {TypedAbstractControl} from './typed-abstract-control.model';
+import {TypedFormControl} from './typed-form-control.type';
+import {TypedFormGroup} from './typed-form-group.model';
 
-interface FormArrayOverride<T> {
-  controls: TypedAbstractControl<T>[];
+export interface TypedFormArray<T> extends FormArray {
+  value: Partial<T>;
+  valueChanges: Observable<T>;
 
-  at(index: number): TypedAbstractControl<T>;
-
-  push(control: TypedAbstractControl<T>): void;
-
-  insert(index: number, control: TypedAbstractControl<T>): void;
+  controls: TypedFormGroup<T>[];
 }
-
-export type TypedFormArray<T> = OverrideProperties<FormArray,
-  FormArrayOverride<T>> &
-  TypedAbstractControl<T>;

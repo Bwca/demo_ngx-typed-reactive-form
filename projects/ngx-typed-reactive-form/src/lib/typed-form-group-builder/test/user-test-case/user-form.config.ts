@@ -19,6 +19,9 @@ export const USER_FORM_CONFIG: TypedFormBuilderConfig<UserDto> = {
     email: ['null'],
     phone: ['null'],
   },
-  friends: [[{} as FriendDto]],
-  tags: [[]],
+  friends: [[{
+    id: 2,
+    name: ''
+  } as FriendDto]],
+  tags: [['', '']],
 };
