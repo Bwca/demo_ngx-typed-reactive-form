@@ -3,6 +3,7 @@
 ## What is it
 
 It is an attempt to bring types to Angular's Reactive Forms using generics. For the sake of intellisense and better developer experience.
+Online demo: https://stackblitz.com/github/Bwca/angular-typed-reactive-form
 
 ## Features
 

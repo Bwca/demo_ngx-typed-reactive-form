@@ -1,6 +1,6 @@
 {
   "name": "ngx-typed-reactive-form",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Make Angular Reactive Forms strongly typed with generics.",
   "author": "Volodymyr Yepishev",
   "repository": {
