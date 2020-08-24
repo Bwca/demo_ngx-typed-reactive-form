@@ -17,7 +17,7 @@ It is an attempt to bring types to Angular's Reactive Forms using generics. For 
 
 
 ## Usage
-1. Start with a model:
+- Start with a model:
 
 ```
 export interface UserDto {
@@ -28,7 +28,7 @@ export interface UserDto {
 ```
 
 
-2. Generate a strongly typed `TypedFormBuilderConfig` based on the model, to use with Reactive Forms `FormBuilder`:
+- Generate a strongly typed `TypedFormBuilderConfig` based on the model, to use with Reactive Forms `FormBuilder`:
 ```
 export const USER_FORM_CONFIG: TypedFormBuilderConfig<UserDto> = {
     /** NOTE: value is strongly typed */
@@ -38,7 +38,7 @@ export const USER_FORM_CONFIG: TypedFormBuilderConfig<UserDto> = {
 };
 ```
 
-3. Create a typed reactive form:
+- Create a typed reactive form:
 ```
 export class DemoComponent implements OnInit {
   public userFormGroup: TypedFormGroup<UserDto>;
@@ -51,4 +51,4 @@ export class DemoComponent implements OnInit {
 }
 ```
 
-4. Enjoy intellisense in template and form's methods, don't forget to star in on github if you like it.
+- Enjoy intellisense in template and form's methods, don't forget to star in on github if you like it.
