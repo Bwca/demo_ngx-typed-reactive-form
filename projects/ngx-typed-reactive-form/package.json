@@ -1,17 +1,29 @@
 {
   "name": "ngx-typed-reactive-form",
   "version": "0.0.1",
-  "description": "A simple package in attempt to type reactive forms",
+  "description": "Make Angular Reactive Forms strongly typed with generics.",
   "author": "Volodymyr Yepishev",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Bwca/ngx-typed-reactive-form"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/Bwca/ngx-typed-reactive-form/issues"
   },
-  "homepage": "",
-  "keywords": [],
+  "homepage": "https://github.com/Bwca/ngx-typed-reactive-form",
+  "keywords": [
+    "angular",
+    "angular 2",
+    "forms",
+    "form",
+    "typed",
+    "reactive forms",
+    "reactive form",
+    "typed reactive forms",
+    "typed reactive form",
+    "strongly typed forms",
+    "strongly typed form"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^10.0.11",
