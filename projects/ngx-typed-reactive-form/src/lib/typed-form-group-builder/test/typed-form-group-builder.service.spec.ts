@@ -101,3 +101,27 @@ describe('DemoTypedFormBuilderService', () => {
     expect(form).toMatchSnapshot();
   });
 });
+
+describe('DemoTypedFormBuilderService', () => {
+  const fb = new FormBuilder();
+  let form: TypedFormGroup<UserDto>;
+
+  it('form should match snapshot', () => {
+
+    const address = fb.group(USER_FORM_CONFIG.contacts.address);
+    const contacts = fb.group({...USER_FORM_CONFIG.contacts, address});
+
+    form = fb.group({
+      ...USER_FORM_CONFIG,
+      contacts,
+      friends: fb.array([])
+    }) as TypedFormGroup<UserDto>;
+
+    USER_FORM_CONFIG.friends.forEach(i => form.controls.friends.push(fb.group(i)));
+
+    expect(form).toMatchSnapshot();
+  });
+});
+
+
+

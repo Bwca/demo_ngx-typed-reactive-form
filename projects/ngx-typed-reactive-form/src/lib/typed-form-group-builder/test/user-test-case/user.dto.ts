@@ -25,6 +25,6 @@ export interface AddressDto {
 }
 
 export interface FriendDto {
-  id: number;
+  id?: number;
   name: string;
 }
