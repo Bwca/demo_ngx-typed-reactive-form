@@ -1,25 +1,54 @@
 # NgxTypedReactiveForm
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.11.
+## What is it
 
-## Code scaffolding
+It is an attempt to bring types to Angular's Reactive Forms using generics. For the sake of intellisense and better developer experience.
 
-Run `ng generate component component-name --project ngx-typed-reactive-form` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-typed-reactive-form`.
+## Features
 
-> Note: Don't forget to add `--project ngx-typed-reactive-form` or else it will be added to the default project in your `angular.json` file.
+- No overrides.
+- No API to learn.
+- Types for `Valuechanges`, `value`, etc.
+- Four generic types:
+    - TypedFormBuilderConfig
+    - TypedFormControl
+    - TypedFormGroup
+    - TypedFormArray
 
-## Build
 
-Run `ng build ngx-typed-reactive-form` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
+1. Start with a model:
 
-## Publishing
+```
+export interface UserDto {
+    name: string;
+    about: string;
+    registered: string;
+  }
+```
 
-After building your library with `ng build ngx-typed-reactive-form`, go to the dist folder `cd dist/ngx-typed-reactive-form` and run `npm publish`.
 
-## Running unit tests
+2. Generate a strongly typed `TypedFormBuilderConfig` based on the model, to use with Reactive Forms `FormBuilder`:
+```
+export const USER_FORM_CONFIG: TypedFormBuilderConfig<UserDto> = {
+    /** NOTE: value is strongly typed */
+  name: ['John Doe', Validators.required],
+  about: ['This is a generic description', Validators.required],
+  registered: ['1992-12-12', Validators.required],
+};
+```
 
-Run `ng test ngx-typed-reactive-form` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Create a typed reactive form:
+```
+export class DemoComponent implements OnInit {
+  public userFormGroup: TypedFormGroup<UserDto>;
 
-## Further help
+  constructor(private fb: FormBuilder) {}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  ngOnInit(): void {
+    this.userFormGroup = this.fb.group(USER_FORM_CONFIG) as TypedFormGroup<UserDto>;
+  }
+}
+```
+
+4. Enjoy intellisense in template and form's methods, don't forget to star in on github if you like it.
