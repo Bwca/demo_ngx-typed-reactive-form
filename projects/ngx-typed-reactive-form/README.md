@@ -3,7 +3,8 @@
 ## What is it
 
 It is an attempt to bring types to Angular's Reactive Forms using generics. For the sake of intellisense and better developer experience.
-Online demo: https://stackblitz.com/github/Bwca/angular-typed-reactive-form
+
+Online demo: [strongly typed reactive form on Stackblitz](https://stackblitz.com/github/Bwca/angular-typed-reactive-form)
 
 ## Features
 
@@ -52,4 +53,10 @@ export class DemoComponent implements OnInit {
 }
 ```
 
-- Enjoy intellisense in template and form's methods, don't forget to star in on github if you like it.
+- Enjoy intellisense in template and form's methods:
+```
+<input [formControl]="userFormGroup.controls.name" />
+```
+
+
+Don't forget to star in on github if you like it.
